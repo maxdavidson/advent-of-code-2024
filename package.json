@@ -1,0 +1,21 @@
+{
+  "name": "advent-of-code-2024",
+  "author": "Max Davidson <davidsonmax@gmail.com>",
+  "description": "Solutions to Advent of Code 2024",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": "^22.11.0",
+    "npm": "^10.9.0"
+  },
+  "exports": null,
+  "scripts": {
+    "test": "NODE_ENV=test node --experimental-strip-types --no-warnings=ExperimentalWarning --test"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "prettier": "~3.4.0",
+    "typescript": "~5.7.0"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "typescript.preferences.quoteStyle": "double",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "editor.rulers": [80],
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 250,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.codeActionsOnSave": {
+    "source.sortImports": "explicit"
+  },
+  "files.readonlyInclude": {
+    "**/node_modules/**/*": true,
+    "package-lock.json": true
+  }
+}
