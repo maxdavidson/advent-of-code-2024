@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2024",
+    "lib": ["ES2024", "ESNext.Iterator"],
+    "module": "NodeNext",
+    "types": ["node"],
+
+    "noEmit": true,
+    "allowJs": true,
+    "checkJs": true,
+
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "rewriteRelativeImportExtensions": true,
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noErrorTruncation": true
+  },
+  "exclude": ["**/node_modules"]
+}
