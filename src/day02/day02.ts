@@ -28,11 +28,11 @@ function isReportAllDecrementing(report: readonly number[]) {
   return true;
 }
 
-function isReportSafe(report: readonly number[]): boolean {
+function isReportSafe(report: readonly number[]) {
   return isReportAllIncrementing(report) || isReportAllDecrementing(report);
 }
 
-export function part1(input: string) {
+export function part1(input: string): number {
   let count = 0;
 
   for (const report of reports(input)) {
@@ -44,7 +44,7 @@ export function part1(input: string) {
   return count;
 }
 
-export function part2(input: string) {
+export function part2(input: string): number {
   return reports(input)
     .filter(
       (report) =>

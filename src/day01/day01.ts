@@ -7,7 +7,7 @@ function* pairs(input: string): Generator<[number, number]> {
   }
 }
 
-export function part1(input: string) {
+export function part1(input: string): number {
   const listA = [];
   const listB = [];
 
@@ -30,7 +30,7 @@ export function part1(input: string) {
   return sum;
 }
 
-export function part2(input: string) {
+export function part2(input: string): number {
   const listA = [];
   const listB = new Map<number, number>();
 

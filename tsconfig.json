@@ -6,10 +6,10 @@
     "types": ["node"],
 
     "noEmit": true,
-    "allowJs": true,
-    "checkJs": true,
+    "declaration": true,
 
     "isolatedModules": true,
+    "isolatedDeclarations": true,
     "verbatimModuleSyntax": true,
     "rewriteRelativeImportExtensions": true,
 
