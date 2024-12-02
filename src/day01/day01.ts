@@ -1,7 +1,9 @@
+import { lines } from "../utils.ts";
+
 function* pairs(input: string): Generator<[number, number]> {
-  for (const line of input.trim().split("\n")) {
+  for (const line of lines(input)) {
     const [a, b] = line.split(/\s+/, 2);
-    yield [Number.parseInt(a!), Number.parseInt(b!)];
+    yield [Number(a!), Number(b!)];
   }
 }
 
