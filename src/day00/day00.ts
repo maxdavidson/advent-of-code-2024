@@ -1,7 +1,7 @@
-export function part1(input: string) {
+export function part1(input: string): number {
   return input.trim().length;
 }
 
-export function part2(input: string) {
+export function part2(input: string): number {
   return input.trim().length;
 }

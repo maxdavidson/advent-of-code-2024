@@ -1,6 +1,15 @@
 export function* lines(input: string): Generator<string> {
-  for (const match of input.matchAll(/^.+$/gm)) {
-    yield match[0];
+  let prevLine: string | undefined;
+
+  for (const match of input.matchAll(/^.*$/gm)) {
+    if (prevLine !== undefined) {
+      yield prevLine;
+    }
+    prevLine = match[0];
+  }
+
+  if (prevLine !== undefined && prevLine !== "") {
+    yield prevLine;
   }
 }
 
