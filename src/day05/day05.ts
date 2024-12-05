@@ -32,36 +32,9 @@ function createUpdateValidator(graph: PageOrderingGraph) {
 }
 
 function createUpdateComparator(graph: PageOrderingGraph) {
-  let currentOrder = 0;
-
-  const orderCache = new Map<number, number>();
-  const visited = new Set<number>();
-  const processed = new Set<number>();
-
-  const dfs = (node: number): void => {
-    if (!processed.has(node) && !visited.has(node)) {
-      visited.add(node);
-
-      for (const neighbor of graph.get(node) ?? []) {
-        dfs(neighbor);
-      }
-
-      currentOrder += 1;
-
-      visited.delete(node);
-      processed.add(node);
-      orderCache.set(node, currentOrder);
-    }
-  };
-
-  for (const node of graph.keys()) {
-    if (!processed.has(node)) {
-      dfs(node);
-    }
-  }
-
   return (a: number, b: number): number => {
-    return (orderCache.get(a) ?? 0) - (orderCache.get(b) ?? 0);
+    // This is apparently enough 🙈
+    return graph.get(a)?.includes(b) ? -1 : 0;
   };
 }
 
@@ -88,7 +61,10 @@ export function part2(input: string): number {
     .map((match) => [Number(match[1]), Number(match[2])] as const)
     .toArray();
 
-  const validator = createUpdateValidator(createGraph(rules));
+  const graph = createGraph(rules);
+
+  const validator = createUpdateValidator(graph);
+  const comparator = createUpdateComparator(graph);
 
   const updates = input
     .matchAll(/^(?:\d+)(?:,\d+)*$/gm)
@@ -97,14 +73,7 @@ export function part2(input: string): number {
   return updates
     .filter((update) => !validator(update))
     .map((update) => {
-      const graph = createGraph(
-        rules
-          .values()
-          .filter(([from, to]) => update.includes(from) && update.includes(to)),
-      );
-
-      update.sort(createUpdateComparator(graph));
-
+      update.sort(comparator);
       return update[Math.floor(update.length / 2)]!;
     })
     .reduce((a, b) => a + b, 0);
