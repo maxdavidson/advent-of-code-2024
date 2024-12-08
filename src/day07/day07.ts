@@ -4,7 +4,8 @@ type Operator = (a: number, b: number) => number;
 
 const add: Operator = (a, b) => a + b;
 const multiply: Operator = (a, b) => a * b;
-const concat: Operator = (a, b) => a * 10 ** Math.floor(Math.log10(b) + 1) + b;
+const concat: Operator = (a, b) =>
+  a * 10 ** (Math.floor(Math.log10(b)) + 1) + b;
 
 function solve(input: string, operators: readonly Operator[]): number {
   const equations = lines(input).map((line) => {
