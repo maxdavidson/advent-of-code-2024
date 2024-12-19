@@ -46,3 +46,22 @@ export function binarySearch<T>(
 
   return low;
 }
+
+export function memoize<This, Args extends readonly unknown[], R, Key>(
+  getKey: (this: This, ...args: Args) => Key,
+  fn: (this: This, ...args: Args) => R,
+): {
+  (this: This, ...args: Args): R;
+  get cache(): Map<Key, R>;
+} {
+  const cache = new Map<Key, R>();
+  function memoized(this: This, ...args: Args): R {
+    const key = getKey.call(this, ...args);
+    if (!cache.has(key)) {
+      cache.set(key, fn.call(this, ...args));
+    }
+    return cache.get(key)!;
+  }
+  memoized.cache = cache;
+  return memoized;
+}
