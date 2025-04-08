@@ -14,5 +14,14 @@
   "files.readonlyInclude": {
     "**/node_modules/**/*": true,
     "package-lock.json": true
-  }
+  },
+  "nodejs-testing.extensions": [
+    {
+      "extensions": ["ts"],
+      "parameters": [
+        "--experimental-strip-types",
+        "--no-warnings=ExperimentalWarning"
+      ]
+    }
+  ]
 }
